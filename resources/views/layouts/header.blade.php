@@ -1,7 +1,7 @@
 <header>
    <nav class="navbar navbar-light bg-light">
        <div class="container">
-           <a href="{{ route('posts.index') }}" class="navbar-brand">投稿アプリ</a>
+           <a href="{{ route('posts.index') }}" class="navbar-brand">ちょるのったー</a>
 
            <ul class="navbar-nav">
                <li class="nav-item">

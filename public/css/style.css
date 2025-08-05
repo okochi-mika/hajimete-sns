@@ -1,12 +1,24 @@
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     background-color: #fff8f8;
+
     color: #333;
 }
 
 .navbar-brand {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #775DD9;
+    color: #ff6699;
 }
 
+.link-custom {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff6699;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff6699;
+}

@@ -12,7 +12,7 @@
    @endif
 
    <div class="mb-2">
-       <a href="{{ route('posts.create') }}" class="text-decoration-none">新規投稿</a>
+       <a href="{{ route('posts.create') }}" class="text-decoration-none link-custom">新規投稿</a>
    </div>
 
    @if($posts->isNotEmpty())
