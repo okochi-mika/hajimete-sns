@@ -37,6 +37,15 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->user_id = Auth::id();
+
+        // ★画像がアップロードされていれば保存する
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {  // hasFile() で画像があるかチェック,isValid() でアップロードの失敗を防止
+        $path = $request->file('image')->store('images', 'public'); // store('images', 'public') で storage/app/public/images/ に保存
+        $post->image_path = $path; // Postモデルにimage_pathカラムがあることが前提
+    }
+
+
+
         $post->save();
 
         return redirect()->route('posts.index')->with('flash_message', '投稿が完了しました。');

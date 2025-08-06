@@ -17,6 +17,10 @@
        <a href="{{ route('posts.index') }}" class="text-decoration-none">&lt; 戻る</a>
    </div>
 
+   <!-- ① enctypeを追加！ -->
+   <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+
    <form action="{{ route('posts.update', $post) }}" method="POST">
        @csrf
        @method('PATCH')
@@ -28,6 +32,13 @@
            <label for="content">本文</label>
            <textarea class="form-control" id="content" name="content">{{ old('content', $post->content) }}</textarea>
        </div>
+
+       <!-- ② 画像アップロード欄を追加！ -->
+       <div class="form-group mb-3">
+           <label for="image">画像</label>
+           <input type="file" class="form-control" id="image" name="image">
+       </div>
+
        <button type="submit" class="btn btn-outline-primary">更新</button>
    </form>
 @endsection

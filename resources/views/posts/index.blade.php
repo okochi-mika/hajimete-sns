@@ -21,6 +21,11 @@
                <div class="card mb-3">
                    <div class="card-body">
                        <h2 class="card-title fs-5">{{ $post->title }}</h2>
+
+                       {{-- 画像表示 --}}
+                @if ($post->image_path)
+                    <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="img-fluid mb-2" style="max-width: 300px;">
+                @endif
                        <p class="card-text">{{ $post->content }}</p>
                        <p>更新日時：{{ $post->updated_at }}</p>
 
