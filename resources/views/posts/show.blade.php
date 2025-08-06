@@ -18,7 +18,7 @@
 
                {{-- 画像表示 --}}
             @if ($post->image_path)
-                <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="img-fluid mb-2" style="max-width: 300px;">
+                <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="img-fluid mb-2" style="max-width: 300px;">  
             @endif
 
                <p class="card-text">{{ $post->content }}</p>
