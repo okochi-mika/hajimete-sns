@@ -49,4 +49,12 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware([
 
 Route::resource('posts', PostController::class)->middleware(['auth', 'verified']);
 
+Route::get('/profile', [ProfileController::class, 'show'])
+    ->middleware(['auth', 'verified'])
+    ->name('profile.show');
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');      // ← ここを追加
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');      // ← 更新用も必要なら追加
+});

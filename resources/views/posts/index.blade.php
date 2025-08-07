@@ -15,6 +15,10 @@
        <a href="{{ route('posts.create') }}" class="text-decoration-none link-custom">新規投稿</a>
    </div>
 
+      <div class="mb-2">
+       <a href="{{ route('profile.show') }}" class="btn btn-primary mb-3">プロフィールを見る</a>
+   </div>
+
    @if($posts->isNotEmpty())
        @foreach($posts as $post)
            <article>
