@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', '投稿一覧')
-
 @section('content')
    @if (session('flash_message'))
        <p class="text-success">{{ session('flash_message') }}</p>

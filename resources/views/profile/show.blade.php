@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'プロフィール')
-
 @section('content')
-    <h1>プロフィール</h1>
+    <h2>プロフィール</h2>
 
     <p><strong>名前:</strong> {{ $user->name }}</p>
     <p><strong>メールアドレス:</strong> {{ $user->email }}</p>
