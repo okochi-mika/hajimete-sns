@@ -38,6 +38,18 @@
         <input type="file" class="form-control" id="image" name="image">
     </div>
 
+    @if ($post->image_path)
+    <div>
+        <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" width="200">
+        <div>
+            <label>
+                <input type="checkbox" name="remove_image" value="1">
+                画像を削除する
+            </label>
+        </div>
+    </div>
+@endif
+
     <button type="submit" class="btn btn-outline-primary">更新</button>
 </form>
 

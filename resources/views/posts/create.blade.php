@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', '新規投稿')
-
 @section('content')
    @if ($errors->any())
        <div class="alert alert-danger">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage; // ←★これを追加！
 
 class PostController extends Controller
 {
@@ -70,6 +71,19 @@ class PostController extends Controller
 
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+
+        // ✅ 画像を削除するチェックがされていたら、画像削除
+        if ($request->has('remove_image') && $post->image_path) {
+            Storage::disk('public')->delete($post->image_path); // ストレージから削除
+            $post->image_path = null; // データベースからも削除
+        }
+
+        // ✅ 新しい画像がアップロードされていたら、画像保存＆パスを更新
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $post->image_path = $imagePath;
+        }
         $post->save();
 
         return redirect()->route('posts.show', $post)->with('flash_message', '投稿を編集しました。');
