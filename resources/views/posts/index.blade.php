@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', '新規投稿')
+
 @section('content')
    @if (session('flash_message'))
        <p class="text-success">{{ session('flash_message') }}</p>
@@ -25,7 +27,8 @@
                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="img-fluid mb-2" style="max-width: 300px;">
                 @endif
                        <p class="card-text">{{ $post->content }}</p>
-                       <p>更新日時：{{ $post->updated_at }}</p>
+                       <p>投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
+                       <p>更新日時：{{ $post->updated_at->format('Y-m-d H:i') }} （{{ $post->updated_at->diffForHumans() }}）</p>
 
                        <div class="d-flex">
                            <a href="{{ route('posts.show', $post) }}" class="btn btn-outline-primary d-block me-1">詳細</a>
