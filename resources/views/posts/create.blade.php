@@ -11,6 +11,8 @@
        </div>
    @endif
 
+   <h3>投稿詳細</h3>
+
    <div class="mb-2">
        <a href="{{ route('posts.index') }}" class="text-decoration-none">&lt; 戻る</a>
    </div>

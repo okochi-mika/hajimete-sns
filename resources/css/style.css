@@ -1,5 +1,10 @@
 body {
     font-family: 'Noto Sans JP', sans-serif;
+
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: #ff6699;
+
+    color: #333;
 }
 
 .wrapper {
@@ -18,5 +23,47 @@ footer {
     height: 60px;
     position: absolute;
     bottom: 0;
+}
+
+.post-date, .post-updated {
+    margin: 0;           /* 余白リセット */
+    line-height: 1.2;    /* 行間を少し詰める */
+}
+
+.post-date + .post-updated {
+    margin-top: 2px;     /* 上にほんの少し余白を足す */
+}
+
+
+.card-text {
+    line-height: 1.8 !important;
+}
+
+.post-dates {
+  margin: 0;
+  line-height: 0.8; /* 行間を詰めたい数値に調整してください */
+  font-size: 0.9em; /* 必要に応じてサイズ調整 */
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ff6600;
+}
+
+.link-custom {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff6699;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ff6699;
+}
+
+.card-text {
+    line-height: 1.8 !important;
 }
 

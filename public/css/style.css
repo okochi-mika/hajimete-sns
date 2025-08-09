@@ -22,3 +22,8 @@ body {
     font-weight: 600;
     color: #ff6699;
 }
+
+.card-text {
+    line-height: 1.8 !important;
+}
+

@@ -1,29 +1,39 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('title', 'プロフィール編集')
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+@section('content')
+    <h2>プロフィール編集</h2>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
+    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+
+        <div>
+            <label for="name">名前:</label>
+            <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
         </div>
-    </div>
-</x-app-layout>
+
+        <div>
+            <label for="email">メールアドレス:</label>
+            <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}">
+        </div>
+
+        <div>
+            <label for="bio">自己紹介:</label>
+            <textarea name="bio" id="bio">{{ old('bio', $user->bio) }}</textarea>
+        </div>
+
+        <div>
+            <label for="avatar">アイコン画像:</label>
+            <input type="file" name="avatar" id="avatar">
+        </div>
+
+        @if ($user->avatar)
+            <p>現在のアイコン:</p>
+            <img src="{{ asset('storage/' . $user->avatar) }}" alt="アバター" style="max-width: 150px;">
+        @endif
+
+        <button type="submit" class="btn btn-success">更新する</button>
+    </form>
+@endsection

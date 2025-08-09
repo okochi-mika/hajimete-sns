@@ -22,8 +22,8 @@
             @endif
 
                <p class="card-text">{{ $post->content }}</p>
-               <p>投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
-               <p>更新日時：{{ $post->updated_at->format('Y-m-d H:i') }} （{{ $post->updated_at->diffForHumans() }}）</p>
+               <p class="post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
+               <p class="post-dates">更新日時：{{ $post->updated_at->format('Y-m-d H:i') }} （{{ $post->updated_at->diffForHumans() }}）</p>
                @if ($post->user_id === Auth::id())
                    <div class="d-flex">
                        <a href="{{ route('posts.edit', $post) }}" class="btn btn-outline-primary d-block me-1">編集</a>

@@ -14,6 +14,8 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+      // 編集ページ
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -63,5 +65,37 @@ class ProfileController extends Controller
     $user = auth()->user();
     return view('profile.show', compact('user'));
     }
+
+        // 作成ページ
+
+    public function create()
+    {
+    return view('profile.create');
+    }
+
+    public function store(Request $request)
+    {
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'bio' => 'nullable|string|max:1000',
+        'avatar' => 'nullable|image|max:2048', // 画像ならこのくらいのバリデーション
+    ]);
+
+    // アバター画像の保存（もしアップロードがあれば）
+    if ($request->hasFile('avatar')) {
+        $path = $request->file('avatar')->store('avatars', 'public');
+        $validated['avatar'] = $path;
+    }
+
+    // ユーザーにプロフィールを紐づけて保存する
+    $user = auth()->user();
+    $user->fill($validated);
+    $user->save();
+
+    return redirect()->route('profile.show')->with('status', 'プロフィールを作成しました！');
+}
+
+
 
 }
