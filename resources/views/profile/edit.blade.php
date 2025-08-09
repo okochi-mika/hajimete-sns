@@ -3,20 +3,28 @@
 @section('title', 'プロフィール編集')
 
 @section('content')
-    <h2>プロフィール編集</h2>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
+        @method('PATCH')
 
         <div>
             <label for="name">名前:</label>
-            <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
+            <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" required>
         </div>
 
         <div>
             <label for="email">メールアドレス:</label>
-            <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}">
+            <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" required>
         </div>
 
         <div>
@@ -29,11 +37,6 @@
             <input type="file" name="avatar" id="avatar">
         </div>
 
-        @if ($user->avatar)
-            <p>現在のアイコン:</p>
-            <img src="{{ asset('storage/' . $user->avatar) }}" alt="アバター" style="max-width: 150px;">
-        @endif
-
-        <button type="submit" class="btn btn-success">更新する</button>
+        <button type="submit">更新する</button>
     </form>
 @endsection

@@ -49,4 +49,11 @@ class User extends Authenticatable implements MustVerifyEmail
      {
         return $this->hasMany(Post::class);
      }
+
+     public function profileExists()
+     {
+    // 例: 自己紹介かアイコンのどちらかがあればプロフィールありと判断
+    return !empty($this->bio) || !empty($this->avatar);
+     }
+
 }

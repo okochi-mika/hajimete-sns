@@ -5,7 +5,16 @@
 
            <ul class="navbar-nav d-flex flex-row align-items-center">
                <li class="nav-item me-3">
-                   <a href="{{ route('profile.show') }}" class="nav-link">プロフィール</a>
+                   @php
+                       $user = auth()->user();
+                   @endphp
+
+                  @if ($user && ($user->bio || $user->avatar))  
+                  <a href="{{ route('profile.show') }}" class="nav-link">{{ $user->name }}</a>
+                  @else
+                  <a href="{{ route('profile.edit') }}" class="nav-link">プロフィール編集</a>
+                  @endif
+
                </li>
                <li class="nav-item">
                    <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
