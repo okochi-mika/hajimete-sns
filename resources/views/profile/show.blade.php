@@ -3,18 +3,24 @@
 @section('title', 'プロフィール')
 
 @section('content')
-    <h2>プロフィール</h2>
+<div class="container my-4">
+  <h2 class="mb-4">プロフィール</h2>
 
-    <p><strong>名前:</strong> {{ $user->name }}</p>
-    <p><strong>メールアドレス:</strong> {{ $user->email }}</p>
-    <p><strong>自己紹介:</strong> {{ $user->bio ?? '未設定です' }}</p>
-    <p><strong>アイコン:</strong> {{ $user->bio ?? '未設定です' }}</p>
+  <div class="card" style="max-width: 600px;">
+    <div class="card-body">
+      <h5 class="card-title">{{ $user->name }}</h5>
+      <h6 class="card-subtitle mb-3 text-muted">{{ $user->email }}</h6>
 
-    @if ($user->avatar)
-        <p><img src="{{ asset('storage/' . $user->avatar) }}" alt="アバター" style="max-width: 150px;"></p>
-    @else
-        <p>アバターは未設定です</p>
-    @endif
+      <p class="card-text">{{ $user->bio ?? '自己紹介は未設定です。' }}</p>
 
-    <a href="{{ route('profile.edit') }}" class="btn btn-primary">プロフィール編集</a>
+      @if ($user->avatar)
+        <img src="{{ asset('storage/' . $user->avatar) }}" alt="アバター" class="img-thumbnail" style="max-width: 150px;">
+      @else
+        <p>アバターは未設定です。</p>
+      @endif
+
+      <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary mt-3">プロフィール編集</a>
+    </div>
+  </div>
+</div>
 @endsection
