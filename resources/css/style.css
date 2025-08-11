@@ -73,4 +73,7 @@ footer {
   font-weight: 700;
 }
 
+.bio-text {
+  white-space: pre-wrap;
+}
 
