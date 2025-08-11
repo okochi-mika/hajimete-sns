@@ -27,3 +27,9 @@ body {
     line-height: 1.8 !important;
 }
 
+.profile-title {
+  color: #FF69B4;
+  font-family: 'Noto Sans JP', sans-serif !important;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
