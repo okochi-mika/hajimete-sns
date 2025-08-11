@@ -20,7 +20,7 @@
       <textarea class="form-control" id="bio" name="bio" rows="4">{{ old('bio', $user->bio) }}</textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">更新する</button>
+    <button type="submit" class="btn btn-primary">更新</button>  
   </form>
 </div>
 
