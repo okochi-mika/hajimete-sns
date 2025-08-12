@@ -13,7 +13,7 @@
 
    <div class="mx-auto" style="width: 40%;">
    <div class="mb-2">
-       <a href="{{ route('posts.create') }}" class="text-decoration-none link-custom">新規投稿</a>
+       <a href="{{ route('posts.create') }}" class="fs-4 text-decoration-none link-custom">新規投稿</a>
    </div>
    </div>
 
@@ -22,16 +22,19 @@
            <article>
             <div class="container m-4">
                 <div class="mx-auto" style="width: 60%;">
-               <div class="card mb-4">
+                <div class="card mb-4 p-3">
                    <div class="card-body">
-                       <h2 class="card-title fs-5">{{ $post->title }}</h2>
+                    <!-- タイトル -->
+                       <h2 class="fs-4 fw-bold mb-3">{{ $post->title }}</h2>
+                       <!-- 本文 -->
+                       <p class="fs-6 text-secondary">{{ $post->content }}</p>
 
                        {{-- 画像表示 --}}
                 @if ($post->image_path)
                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="img-fluid mb-2" style="max-width: 300px;">
                 @endif
-                       <p class="card-text">{{ $post->content }}</p>
-                       <p class="post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
+                    <div class="text-muted mt-3">
+                       <p class="fs-7 post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
 
                        <div class="d-flex">
                            <a href="{{ route('posts.show', $post) }}" class="btn btn-outline-primary d-block me-1 shadow">詳細</a>

@@ -38,6 +38,6 @@
            <input type="file" class="form-control" id="image" name="image">
        </div>
        
-       <button type="submit" class="btn btn-outline-primary">投稿</button>
+       <button type="submit" class="btn btn-outline-primary shadow" >投稿</button>
    </form>
 @endsection
