@@ -15,7 +15,7 @@
     <pre class="bio-text">{{ $user->bio }}</pre>
 
     {{-- 編集ボタン --}}
-    <a href="{{ route('profile.edit') }}" class="btn btn-primary">編集</a>
+    <a href="{{ route('profile.edit') }}" class="btn btn-primary shadow">編集</a>
 
     {{-- 更新完了メッセージ --}}
     @if (session('status'))

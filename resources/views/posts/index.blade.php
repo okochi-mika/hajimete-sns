@@ -11,14 +11,18 @@
        <p class="text-danger">{{ session('error_message') }}</p>
    @endif
 
+   <div class="mx-auto" style="width: 40%;">
    <div class="mb-2">
        <a href="{{ route('posts.create') }}" class="text-decoration-none link-custom">新規投稿</a>
+   </div>
    </div>
 
    @if($posts->isNotEmpty())
        @foreach($posts as $post)
            <article>
-               <div class="card mb-3">
+            <div class="container m-4">
+                <div class="mx-auto" style="width: 60%;">
+               <div class="card mb-4">
                    <div class="card-body">
                        <h2 class="card-title fs-5">{{ $post->title }}</h2>
 
@@ -28,21 +32,21 @@
                 @endif
                        <p class="card-text">{{ $post->content }}</p>
                        <p class="post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
-                       <p class="post-dates">更新日時：{{ $post->updated_at->format('Y-m-d H:i') }} （{{ $post->updated_at->diffForHumans() }}）</p>
-
 
                        <div class="d-flex">
-                           <a href="{{ route('posts.show', $post) }}" class="btn btn-outline-primary d-block me-1">詳細</a>
-                           <a href="{{ route('posts.edit', $post) }}" class="btn btn-outline-primary d-block me-1">編集</a>
+                           <a href="{{ route('posts.show', $post) }}" class="btn btn-outline-primary d-block me-1 shadow">詳細</a>
+                           <a href="{{ route('posts.edit', $post) }}" class="btn btn-outline-primary d-block me-1 shadow">編集</a>
 
                            <form action="{{ route('posts.destroy', $post) }}" method="POST" onsubmit="return confirm('本当に削除してもよろしいですか？');">
                                @csrf
                                @method('DELETE')
-                               <button type="submit" class="btn btn-outline-danger">削除</button>
+                               <button type="submit" class="btn btn-outline-danger shadow">削除</button>
                            </form>
                        </div>
                    </div>
                </div>
+              </div>
+           </div>
            </article>
        @endforeach
    @else

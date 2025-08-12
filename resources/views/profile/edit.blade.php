@@ -28,8 +28,8 @@
       @enderror
     </div>
 
-    <button type="submit" class="btn btn-primary">更新する</button>
-    <a href="{{ route('profile.show') }}" class="btn btn-secondary ms-2">キャンセル</a>
+    <button type="submit" class="btn btn-primary shadow">更新する</button>
+    <a href="{{ route('profile.show') }}" class="btn btn-secondary ms-2 shadow">キャンセル</a>
   </form>
 </div>
 

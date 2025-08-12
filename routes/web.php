@@ -55,5 +55,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');   // ← 新規作成用ルート追加
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');            // ← 新規保存用ルート追加
     Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');   
+    
 });
 
