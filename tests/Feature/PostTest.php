@@ -55,8 +55,6 @@ class PostTest extends TestCase
         $response->assertSee($post->title);
     }
 
-    //======== 前略 ========
-
     // 未ログインのユーザーは新規投稿ページにアクセスできない
     public function test_guest_cannot_access_posts_create()
     {

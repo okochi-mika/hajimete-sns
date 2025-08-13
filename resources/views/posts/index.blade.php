@@ -13,7 +13,7 @@
 
    <div class="mx-auto" style="width: 40%;">
    <div class="mb-2">
-       <a href="{{ route('posts.create') }}" class="fs-4 text-decoration-none link-custom">新規投稿</a>
+       <a href="{{ route('posts.create') }}" class="fs-4 text-decoration-none link-custom shadow">新規投稿</a>
    </div>
    </div>
 
@@ -22,7 +22,7 @@
            <article>
             <div class="container m-4">
                 <div class="mx-auto" style="width: 60%;">
-                <div class="card mb-4 p-3">
+                <div class="card mb-4 p-3 shadow">
                    <div class="card-body">
                     <!-- タイトル -->
                        <h2 class="fs-4 fw-bold mb-3">{{ $post->title }}</h2>

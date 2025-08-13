@@ -9,6 +9,7 @@ body {
     font-size: 1.6rem;
     font-weight: 700;
     color: #ff6699;
+    font-family: 'Noto Sans JP', sans-serif !important;
 }
 
 .link-custom {
