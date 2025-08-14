@@ -13,7 +13,7 @@ class PostController extends Controller
     // 一覧ページ
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'asc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
 
         return view('posts.index', compact('posts'));
@@ -64,30 +64,44 @@ class PostController extends Controller
 
     // 更新機能
     public function update(PostRequest $request, Post $post)
-    {
+{
+    // 不正アクセス防止
         if ($post->user_id !== Auth::id()) {
-            return redirect()->route('posts.index')->with('error_message', '不正なアクセスです。');
-        }
-
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-
-        // ✅ 画像を削除するチェックがされていたら、画像削除
-        if ($request->has('remove_image') && $post->image_path) {
-            Storage::disk('public')->delete($post->image_path); // ストレージから削除
-            $post->image_path = null; // データベースからも削除
-        }
-
-        // ✅ 新しい画像がアップロードされていたら、画像保存＆パスを更新
-
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
-            $post->image_path = $imagePath;
-        }
-        $post->save();
-
-        return redirect()->route('posts.show', $post)->with('flash_message', '投稿を編集しました。');
+            return redirect()->route('posts.index')
+            ->with('error_message', '不正なアクセスです。');
     }
+
+    // タイトル・本文を更新
+    $post->title = $request->input('title');
+    $post->content = $request->input('content');
+
+    // ✅ 画像削除処理
+    if ($request->has('remove_image') && $request->input('remove_image') == 1) {
+        if ($post->image_path) {
+            // 古い画像があれば削除
+            Storage::disk('public')->delete($post->image_path);
+            $post->image_path = null;
+        }
+    }
+
+    // ✅ 新しい画像がアップロードされた場合
+    if ($request->hasFile('image')) {
+        // 古い画像が残っていれば削除
+        if ($post->image_path) {
+            Storage::disk('public')->delete($post->image_path);
+        }
+        // 新しい画像を保存
+        $path = $request->file('image')->store('images', 'public');
+        $post->image_path = $path;
+    }
+
+    // 保存
+    $post->save();
+
+    return redirect()->route('posts.show', $post)
+        ->with('flash_message', '投稿を編集しました。');
+}
+
 
  // 削除機能
     public function destroy(Post $post) {
