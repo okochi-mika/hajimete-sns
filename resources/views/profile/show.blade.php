@@ -19,8 +19,8 @@
 
                 {{-- 編集ボタンと戻るリンク --}}
                 <div class="mt-3">
-                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary me-2 shadow">編集</a>
-                    <a href="{{ route('posts.index') }}" class="btn btn-link text-decoration-none">戻る</a>
+                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary me-1 shadow">編集</a>
+                    <a href="{{ route('posts.index') }}" class="btn btn btn-outline-secondary shadow">キャンセル</a>
                 </div>
 
                 {{-- 更新完了メッセージ --}}

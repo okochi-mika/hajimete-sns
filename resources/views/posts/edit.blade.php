@@ -22,19 +22,22 @@
     @csrf
     @method('PATCH')
 
-    <div class="form-group mb-3">
-        <label for="title">タイトル</label>
+    <div class="mx-auto" style="width: 60%;">
+        <div class="card mb-4 p-3 shadow">
+            <div class="card-body">
+        <div class="form-group mb-3">
+        <label for="title" class="form-label fs-4 fw-bold">タイトル</label>
         <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $post->title) }}">
     </div>
 
     <div class="form-group mb-3">
-        <label for="content">本文</label>
+        <label for="content" class="form-label fs-5 fw-bold">本文</label>
         <textarea class="form-control" id="content" name="content">{{ old('content', $post->content) }}</textarea>
     </div>
     
 	<!-- ② 画像アップロード欄を追加！ -->
     <div class="form-group mb-3">
-        <label for="image">画像</label>
+        <label for="image" class="form-label fs-5 fw-bold">画像</label>
         <input type="file" class="form-control" id="image" name="image">
     </div>
 
@@ -48,9 +51,11 @@
             </label>
         </div>
     </div>
+</div>
+</div>
 @endif
 
-    <button type="submit" class="btn btn-outline-primary">更新</button>
+    <a href="{{ route('posts.index') }}" class="btn btn btn btn-outline-primary shadow me-1">更新</a>
 </form>
 
 @endsection
