@@ -10,7 +10,7 @@
     <div class="mx-auto" style="width: 60%;"> {{-- 中央寄せ＆幅指定 --}}
         <div class="card mb-4 p-3 shadow">
             <div class="card-body">
-                <form method="POST" action="{{ route('profile.update') }}">
+                <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
 
@@ -33,12 +33,18 @@
                         @enderror
                     </div>
 
-                    {{-- ボタン --}}
+                    {{-- アバター画像 --}}
+                    <div class="mb-3">
+                        <label for="avatar" class="form-label fs-5 fw-bold">プロフィール画像</label>
+                        <input type="file" class="form-control" id="avatar" name="avatar">
+                    </div>
+
+                                        {{-- ボタン --}}
                     <div class="mt-3">
-                        <a href="{{ route('posts.index') }}" class="btn btn-outline-primary me-1 shadow">更新</a>
+                        <button type="submit" class="btn btn-outline-primary me-1 shadow">更新</button>
+                        <a href="{{ route('posts.index') }}" class="btn btn-outline-secondary shadow">保存</a>
                     </div>
                 </form>
-
             </div> {{-- card-body --}}
         </div> {{-- card --}}
     </div> {{-- mx-auto --}}

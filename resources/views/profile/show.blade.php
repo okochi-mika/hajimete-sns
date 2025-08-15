@@ -14,18 +14,18 @@
             <p class="fs-5 fw-bold"><strong>自己紹介：</strong></p>
             <pre class="fs-6 bio-text">{{ $user->bio }}</pre>
 
+            {{-- プロフィール画像表示 --}}
+            @if ($user->avatar)
+            <img src="{{ asset('storage/' . $user->avatar) }}" alt="アバター" class="rounded-circle" style="width:60px; height:60px;">
+            @endif
+
+            </div>
+
             {{-- 編集ボタンと戻るリンク --}}
             <div class="mt-3">
                 <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary me-2 shadow">編集</a>
-                <a href="{{ route('posts.index') }}" class="btn btn-outline-secondary shadow">キャンセル</a>
+                <a href="{{ route('posts.index') }}" class="btn btn-outline-secondary shadow">戻る</a>
             </div>
-
-            {{-- 更新完了メッセージ --}}
-            @if (session('status'))
-                <div class="alert alert-success mt-3">
-                    {{ session('status') }}
-                </div>
-            @endif
         </div>
     </div>
 </div>
