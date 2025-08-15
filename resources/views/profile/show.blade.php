@@ -4,33 +4,29 @@
 @section('title', 'プロフィール情報')
 
 @section('content')
-<div class="container profile-wrapper my-4">
-    <h2 class="mb-4 profile-title">プロフィール情報</h2>
+<div class="mx-auto" style="max-width: 600px;"> {{-- 中央寄せ＆幅指定 --}}
+    <div class="card mb-4 p-3 shadow">
+        <div class="card-body">
+            {{-- 名前 --}}
+            <p class="fs-4 fw-bold"><strong>名前：</strong> {{ $user->name }}</p>
 
-    <div class="mx-auto" style="width: 60%;"> {{-- 中央寄せ＆幅指定 --}}
-        <div class="card mb-4 p-3 shadow">
-            <div class="card-body">
-                {{-- 名前 --}}
-                <p class="fs-4"><strong>名前：</strong> {{ $user->name }}</p>
+            {{-- 自己紹介 --}}
+            <p class="fs-5 fw-bold"><strong>自己紹介：</strong></p>
+            <pre class="fs-6 bio-text">{{ $user->bio }}</pre>
 
-                {{-- 自己紹介 --}}
-                <p class="fs-5"><strong>自己紹介：</strong></p>
-                <pre class="fs-6 bio-text">{{ $user->bio }}</pre>
+            {{-- 編集ボタンと戻るリンク --}}
+            <div class="mt-3">
+                <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary me-2 shadow">編集</a>
+                <a href="{{ route('posts.index') }}" class="btn btn-outline-secondary shadow">キャンセル</a>
+            </div>
 
-                {{-- 編集ボタンと戻るリンク --}}
-                <div class="mt-3">
-                    <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary me-1 shadow">編集</a>
-                    <a href="{{ route('posts.index') }}" class="btn btn btn-outline-secondary shadow">キャンセル</a>
+            {{-- 更新完了メッセージ --}}
+            @if (session('status'))
+                <div class="alert alert-success mt-3">
+                    {{ session('status') }}
                 </div>
-
-                {{-- 更新完了メッセージ --}}
-                @if (session('status'))
-                    <div class="alert alert-success mt-3">
-                        {{ session('status') }}
-                    </div>
-                @endif
-            </div> {{-- card-body --}}
-        </div> {{-- card --}}
-    </div> {{-- mx-auto --}}
+            @endif
+        </div>
+    </div>
 </div>
 @endsection
