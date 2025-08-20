@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '新規投稿')
+@section('title', '投稿一覧')
 
 @section('content')
    @if (session('flash_message'))
