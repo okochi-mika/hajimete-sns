@@ -58,4 +58,15 @@ class User extends Authenticatable implements MustVerifyEmail
     return !empty($this->bio) || !empty($this->avatar);
      }
 
+    // User.php
+    public function bookmarks()
+    {
+    return $this->hasMany(Bookmark::class);
+    }
+
+    public function bookmarkedPosts()
+    {
+    return $this->belongsToMany(Post::class, 'bookmarks');
+    }
+
 }

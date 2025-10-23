@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BookmarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');      // ← 更新用も必要なら追加
     Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');   // ← 新規作成用ルート追加
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');            // ← 新規保存用ルート追加
-    Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');   
-    
+    Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');   // ←プロフィール
+    Route::post('/bookmark/{post}', [BookmarkController::class, 'store'])->name('bookmark.store');  //←ブックマーク追加
+    Route::delete('/bookmark/{post}', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');  // ブックマーク削除   
 });
 

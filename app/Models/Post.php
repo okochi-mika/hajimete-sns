@@ -21,4 +21,11 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Post.php
+    public function bookmarks()
+    {
+    return $this->hasMany(Bookmark::class);
+    }
+    
 }
