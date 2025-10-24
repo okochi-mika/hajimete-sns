@@ -8,7 +8,9 @@ body {
 }
 
 .wrapper {
-    flex: 1; /* 本文部分を伸ばしてフッターを下に押し下げる */
+    /* 本文部分を伸ばしてフッターを下に押し下げる */
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
 }
 
 nav {

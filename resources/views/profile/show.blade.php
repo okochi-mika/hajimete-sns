@@ -24,8 +24,8 @@
             {{-- 編集ボタンと戻るリンク --}}
             <div class="mt-3">
                 <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary me-2 shadow">編集</a>
-                <a href="{{ route('posts.index') }}" class="btn btn-outline-secondary shadow">戻る</a>
-                <a href="{{ route('bookmarks.index') }}" class="btn btn-outline-success shadow">ブックマーク一覧</a>
+                <a href="{{ route('posts.index') }}" class="btn btn-outline-secondary me-2 shadow">戻る</a>
+                <a href="{{ route('bookmarks.index') }}" class="btn btn-outline-warning shadow">ブックマーク一覧</a>
             </div>
         </div>
     </div>

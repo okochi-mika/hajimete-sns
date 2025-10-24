@@ -19,16 +19,15 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper d-flex flex-column min-vh-100">
         @include('layouts.header')
 
-        <main>
+        <main class="flex-grow-1">
             <div class="container">
-                <h1 class="fs-2 my-3">@yield('title')</h1>
-                @yield('content')
+            <h1 class="fs-2 my-3">@yield('title')</h1>
+            @yield('content')
             </div>
         </main>
-
         @include('layouts.footer')
     </div>
 
