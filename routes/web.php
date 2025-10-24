@@ -57,6 +57,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');            // ← 新規保存用ルート追加
     Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');   // ←プロフィール
     Route::post('/bookmark/{post}', [BookmarkController::class, 'store'])->name('bookmark.store');  //←ブックマーク追加
-    Route::delete('/bookmark/{post}', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');  // ブックマーク削除   
+    Route::delete('/bookmark/{post}', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');  // ブックマーク削除  
+    Route::get('/bookmarks', [App\Http\Controllers\BookmarkController::class, 'index'])->name('bookmarks.index'); // ブックマーク一覧
+ 
 });
 

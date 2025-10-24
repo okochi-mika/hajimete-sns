@@ -53,12 +53,12 @@
                     <form action="{{ route('bookmark.destroy', $post) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-warning shadow">★ 解除</button>
+                        <button type="submit" class="btn btn-warning shadow">解除</button>
                     </form>
                 @else
                     <form action="{{ route('bookmark.store', $post) }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-outline-warning shadow">☆ ブックマーク</button>
+                <button type="submit" class="btn btn-outline-warning shadow">ブックマーク</button>
                     </form>
                     @endif
                     @endauth

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Bookmark;
+use Illuminate\Support\Facades\Auth;
+
 
 class BookmarkController extends Controller
 {
@@ -25,9 +27,18 @@ class BookmarkController extends Controller
     public function destroy(Post $post)
     {
         $user = auth()->user();
-
         $user->bookmarks()->where('post_id', $post->id)->delete();
 
         return back()->with('flash_message', 'ブックマークを解除しました。');
     }
+
+    public function index()
+    {
+    // ログイン中ユーザーのブックマーク一覧を取得
+        $user = Auth::user();
+        $bookmarkedPosts = $user->bookmarks()->with('post')->get()->pluck('post');
+        
+        return view('bookmarks.index', compact('bookmarkedPosts'));
+    }
+
 }
