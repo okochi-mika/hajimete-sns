@@ -19,6 +19,29 @@
 </head>
 
 <body>
+    {{-- 右サイドにおばけ画像を固定表示 --}}
+        <img src="{{ asset('images/halloween_ghost.gif') }}"
+         alt="ハロウィンおばけ"
+         style="position: fixed;
+                right: 30px;
+                bottom: 80px;
+                width: 300px;
+                height: 300px;
+                z-index: 9999;
+                opacity: 0.9;">
+
+    {{--  左サイドにかぼちゃ画像を固定表示 --}}
+        <img src="{{ asset('images/pumpkin_stamp.gif') }}"
+         alt="かぼちゃスタンプ"
+         style="position: fixed;
+                left: 30px;
+                bottom: 80px;
+                width: 300px;
+                height: 300px;
+                z-index: 9999;
+                opacity: 0.9;">
+
+
     <div class="wrapper d-flex flex-column min-vh-100">
         @include('layouts.header')
 
@@ -50,6 +73,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])

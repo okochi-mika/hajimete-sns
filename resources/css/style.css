@@ -76,3 +76,12 @@ footer {
   white-space: pre-wrap;
 }
 
+body {
+  background-color: #ff6699;
+  background-image: url('/images/halloween_ghost.gif');
+  background-repeat: no-repeat;
+  background-position: right 20px bottom 80px;
+  background-size: 300px 300px;
+  background-attachment: fixed;
+}
+
