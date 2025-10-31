@@ -19,24 +19,24 @@
 </head>
 
 <body>
-    {{-- 右サイドにおばけ画像を固定表示 --}}
-        <img src="{{ asset('images/halloween_ghost.gif') }}"
-         alt="ハロウィンおばけ"
+    {{-- 右サイドにを固定表示 --}}
+        <img src="{{ asset('images/hajime_todoroki.png') }}"
+         alt="はじめちゃん"
          style="position: fixed;
-                right: 30px;
+                right: 20px;
                 bottom: 80px;
-                width: 300px;
-                height: 300px;
+                width: auto;
+                height: 500px;
                 z-index: 9999;
                 opacity: 0.9;">
-
-    {{--  左サイドにかぼちゃ画像を固定表示 --}}
-        <img src="{{ asset('images/pumpkin_stamp.gif') }}"
-         alt="かぼちゃスタンプ"
+    
+    {{--  左サイドに固定表示 --}}
+        <img src="{{ asset('images/zinmu.PNG') }}"
+         alt="じんむさん"
          style="position: fixed;
                 left: 30px;
                 bottom: 80px;
-                width: 300px;
+                width: auto;
                 height: 300px;
                 z-index: 9999;
                 opacity: 0.9;">
