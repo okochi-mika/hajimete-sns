@@ -19,20 +19,21 @@
 </head>
 
 <body>
-    {{-- 右サイドにを固定表示 --}}
-        <img src="{{ asset('images/hajime_todoroki.png') }}"
+
+{{-- 右サイドにを固定表示 --}}
+        <img src="{{ asset('images/hajime_todoroki.gif') }}"
          alt="はじめちゃん"
          style="position: fixed;
                 right: 20px;
                 bottom: 80px;
                 width: auto;
-                height: 500px;
+                height: 300px;
                 z-index: 9999;
                 opacity: 0.9;">
     
     {{--  左サイドに固定表示 --}}
-        <img src="{{ asset('images/zinmu.PNG') }}"
-         alt="じんむさん"
+        <img src="{{ asset('images/hajime_todoroki.gif') }}"
+         alt="はじめちゃん"
          style="position: fixed;
                 left: 30px;
                 bottom: 80px;
@@ -40,7 +41,6 @@
                 height: 300px;
                 z-index: 9999;
                 opacity: 0.9;">
-
 
     <div class="wrapper d-flex flex-column min-vh-100">
         @include('layouts.header')
