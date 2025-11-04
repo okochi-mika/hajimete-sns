@@ -29,7 +29,8 @@
                 width: auto;
                 height: 300px;
                 z-index: 9999;
-                opacity: 0.9;">
+                opacity: 0.9;
+                pointer-events: none;">
     
     {{--  左サイドに固定表示 --}}
         <img src="{{ asset('images/hajime_todoroki.gif') }}"
@@ -40,7 +41,8 @@
                 width: auto;
                 height: 300px;
                 z-index: 9999;
-                opacity: 0.9;">
+                opacity: 0.9;
+                pointer-events: none;">
 
     <div class="wrapper d-flex flex-column min-vh-100">
         @include('layouts.header')
