@@ -60,6 +60,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
+    {{--  背景に画像を追加  --}}
+<body style="background: url('{{ asset('images/dot_pink_b.png') }}') 
+             no-repeat center center fixed;
+             background-size: cover;">
 
 </html>
 {{--

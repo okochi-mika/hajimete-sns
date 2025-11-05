@@ -1,10 +1,5 @@
 body {
-    font-family: 'Noto Sans JP', sans-serif;
-
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    background-color: #ff6699;
-
-    color: #333;
+    font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
 }
 
 .wrapper {
