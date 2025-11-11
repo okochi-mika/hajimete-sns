@@ -7,21 +7,29 @@
     <title>@yield('title')</title>
 
     {{-- Bootstrap --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+        crossorigin="anonymous">
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
 
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" >
-
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
-<body>
+<body style="
+    font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+    background-image: url('http://localhost:8888/images/dot_pink_b.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+">
 
-{{-- 右サイドにを固定表示 --}}
-        <img src="{{ asset('images/hajime_todoroki.gif') }}"
+    {{-- 右サイドに固定表示 --}}
+    <img src="{{ asset('images/hajime_todoroki.gif') }}" 
          alt="はじめちゃん"
          style="position: fixed;
                 right: 20px;
@@ -31,9 +39,9 @@
                 z-index: 9999;
                 opacity: 0.9;
                 pointer-events: none;">
-    
-    {{--  左サイドに固定表示 --}}
-        <img src="{{ asset('images/hajime_todoroki.gif') }}"
+
+    {{-- 左サイドに固定表示 --}}
+    <img src="{{ asset('images/hajime_todoroki.gif') }}"
          alt="はじめちゃん"
          style="position: fixed;
                 left: 30px;
@@ -49,23 +57,22 @@
 
         <main class="flex-grow-1">
             <div class="container">
-            <h1 class="fs-2 my-3">@yield('title')</h1>
-            @yield('content')
+                <h1 class="fs-2 my-3">@yield('title')</h1>
+                @yield('content')
             </div>
         </main>
+
         @include('layouts.footer')
     </div>
 
     {{-- Bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
 
-    {{--  背景に画像を追加  --}}
-<body style="background: url('{{ asset('images/dot_pink_b.png') }}') 
-             no-repeat center center fixed;
-             background-size: cover;">
-
 </html>
+
 {{--
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">

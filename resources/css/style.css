@@ -1,4 +1,5 @@
 body {
+    /* 文字のフォント */
     font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
 }
 
@@ -76,3 +77,15 @@ footer {
     height: 40px ; /* 高さ固定 */
     width: auto;  /* 横は自動比率 */
 }
+
+.btn {
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(255, 105, 180, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(255, 105, 180, 0.4);
+}
+
