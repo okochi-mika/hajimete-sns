@@ -19,14 +19,22 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
-<body style="
-    font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-    background-image: url('http://localhost:8888/images/dot_pink_b.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-">
+<body>
+
+    <!-- 背景動画 -->
+     
+    <video autoplay muted loop playsinline
+        style="
+            position: fixed;  
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        ">
+        <source src="{{ asset('videos/snow_pink_B.mp4') }}" type="video/mp4">
+    </video>
 
     {{-- 右サイドに固定表示 --}}
     <img src="{{ asset('images/hajime_todoroki.gif') }}" 
