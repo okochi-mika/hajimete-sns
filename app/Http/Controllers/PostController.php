@@ -45,12 +45,17 @@ class PostController extends Controller
         $post->image_path = $path; // Postモデルにimage_pathカラムがあることが前提
     }
 
-
+    // ★動画がアップロードされていれば保存する
+    if ($request->hasFile('videos') && $request->file('videos')->isValid()) { // hasFile() で動画があるかチェック,isValid() でアップロードの失敗を防止
+        $path = $request->file('videos')->store('videos', 'public'); // store('videos', 'public') で storage/app/public/videos/ に保存
+        $post->videos_path = $path;  // Postモデルにvideos_pathカラムがあることが前提、カラム名はvideos_pathで統一
+    }
 
         $post->save();
 
         return redirect()->route('posts.index')->with('flash_message', '投稿が完了しました。');
     }
+
 
     // 編集ページ
     public function edit(Post $post)
@@ -84,6 +89,15 @@ class PostController extends Controller
         }
     }
 
+    // ✅ 動画削除処理
+    if ($request->has('remove_video') && $request->input('remove_video') == 1) {
+        if ($post->videos_path) {
+            //  古い動画があれば削除
+            Storage::disk('public')->delete($post->video_path);
+            $post->video_path = null;
+        }
+    }
+    
     // ✅ 新しい画像がアップロードされた場合
     if ($request->hasFile('image')) {
         // 古い画像が残っていれば削除
@@ -95,12 +109,24 @@ class PostController extends Controller
         $post->image_path = $path;
     }
 
+    // ✅ 新しい動画がアップロードされた場合
+
+    if ($request->hasFile('video')) {
+        // 古い動画が残っていれば削除
+        if ($post->videos_path) {
+            Storage::disk('public')->delete($post->video_path);
+        }
+        // 新しい動画を保存
+        $path = $request->file('videos')->store('video', 'public');
+        $post->video_path =$path;
+    }
+    
     // 保存
     $post->save();
 
     return redirect()->route('posts.show', $post)
         ->with('flash_message', '投稿を編集しました。');
-}
+    }
 
 
  // 削除機能

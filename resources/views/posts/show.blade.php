@@ -19,6 +19,17 @@
                 <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="img-fluid mb-2" style="max-width: 300px;">  
             @endif
 
+            {{-- 動画表示 --}}
+            @if ($post->videos_path)
+                <video src="{{ asset('storage/' . $post->video_path) }}"
+                class="mb-3"
+                style="max-width: 500px; width: 100%;"
+                controls
+                loop>
+    </video>
+@endif
+
+
                <p class="card-text">{{ $post->content }}</p>
                <p class="post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
                <p class="post-dates">更新日時：{{ $post->updated_at->format('Y-m-d H:i') }} （{{ $post->updated_at->diffForHumans() }}）</p>

@@ -36,6 +36,10 @@
             <div class="form-group mb-4">
                 <label for="image">画像</label>
                 <input type="file" class="form-control" id="image" name="image">
+
+            <div class="from-group mb-4">
+                <label for="videos">動画</label>
+                <input type="file" class="form-control" id="videos" name="videos">
             </div>
 
             <button type="submit" class="btn btn-outline-primary shadow">投稿</button>

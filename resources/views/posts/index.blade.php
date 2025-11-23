@@ -34,6 +34,17 @@
                 @if ($post->image_path)
                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="img-fluid mb-2" style="max-width: 300px;">
                 @endif
+
+                {{-- 動画表示 --}}
+                @if ($post->videos_path)
+                    <video src="{{ asset('storage/' . $post->video_path) }}"
+                   class="mb-2"
+                   style="max-width: 300px;"
+                   controls
+                   loop>
+                   </video>
+                @endif
+
                     <div class="text-muted mt-3">
                        <p class="fs-7 post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
 
