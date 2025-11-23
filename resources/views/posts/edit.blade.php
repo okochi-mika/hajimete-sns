@@ -55,7 +55,27 @@
                         </div>
                     @endif
 
-                    
+                    <!-- 動画アップロード -->
+                     <div class="form-group mb-3">
+                        <label for="video" class="form-label fs-5 fw-bold">動画</label>
+                        <input type="file" class="form-control" id="video" name="video">
+                    </div>
+
+                    <!-- 常に remove_videos を送信（0 = 削除しない） -->
+                    <input type="hidden" name="remove_video" value="0">
+                    @if ($post->video)
+                    <div class="mb-3">
+                        <video src="{{ asset('storage/' . $post->video) }}" 
+                        width="200" 
+                        controls></video>
+                        <div class="mt-2">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="remove_video" value="1">
+                                動画を削除する
+                            </label>
+                        </div>
+                    </div>
+                    @endif
 
                     <!-- 更新ボタン -->
                     <button type="submit" class="btn btn-outline-primary shadow me-1">更新</button>

@@ -13,7 +13,9 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'user_id' // ← もし一緒に保存してるならこれも必要！
+        'user_id', // ← もし一緒に保存してるならこれも必要！
+        'image_path',     // 画像カラム
+        'video',     // 動画カラム
     ];
 
     // 1つの投稿は1人のユーザーに属する

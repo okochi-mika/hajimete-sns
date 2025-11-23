@@ -93,8 +93,8 @@ class PostController extends Controller
     if ($request->has('remove_video') && $request->input('remove_video') == 1) {
         if ($post->videos_path) {
             //  古い動画があれば削除
-            Storage::disk('public')->delete($post->video_path);
-            $post->video_path = null;
+            Storage::disk('public')->delete($post->video);
+            $post->video = null;
         }
     }
     
@@ -113,12 +113,12 @@ class PostController extends Controller
 
     if ($request->hasFile('video')) {
         // 古い動画が残っていれば削除
-        if ($post->videos_path) {
-            Storage::disk('public')->delete($post->video_path);
+        if ($post->video) {
+            Storage::disk('public')->delete($post->video);
         }
         // 新しい動画を保存
-        $path = $request->file('videos')->store('video', 'public');
-        $post->video_path =$path;
+        $path = $request->file('video')->store('video', 'public');
+        $post->video =$path;
     }
     
     // 保存

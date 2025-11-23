@@ -12,14 +12,14 @@ return new class extends Migration
     public function up()
 {
     Schema::table('posts', function (Blueprint $table) {
-        $table->string('video_path')->nullable()->after('image_path');
+        $table->string('video')->nullable()->after('image_path'); // 画像カラムの後に追加
     });
 }
 
 public function down()
 {
     Schema::table('posts', function (Blueprint $table) {
-        $table->dropColumn('video_path');
+        $table->dropColumn('video'); // 元に戻すときに削除
     });
 }
 

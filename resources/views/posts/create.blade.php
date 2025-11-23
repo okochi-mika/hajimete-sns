@@ -38,8 +38,8 @@
                 <input type="file" class="form-control" id="image" name="image">
 
             <div class="from-group mb-4">
-                <label for="videos">動画</label>
-                <input type="file" class="form-control" id="videos" name="videos">
+                <label for="video">動画</label>
+                <input type="file" class="form-control" id="video" name="video">
             </div>
 
             <button type="submit" class="btn btn-outline-primary shadow">投稿</button>

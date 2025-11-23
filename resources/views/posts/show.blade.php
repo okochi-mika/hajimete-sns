@@ -20,8 +20,8 @@
             @endif
 
             {{-- 動画表示 --}}
-            @if ($post->videos_path)
-                <video src="{{ asset('storage/' . $post->video_path) }}"
+            @if ($post->video)
+                <video src="{{ asset('storage/' . $post->video) }}"
                 class="mb-3"
                 style="max-width: 500px; width: 100%;"
                 controls
