@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', '投稿一覧')
-
 @section('content')
    @if (session('flash_message'))
        <p class="text-success">{{ session('flash_message') }}</p>
@@ -12,10 +10,9 @@
    @endif
 
    <div class="mx-auto" style="width: 40%;">
-   <div class="mb-2">
+    <div class="mb-2">
        <a href="{{ route('posts.create') }}" class="fs-4 text-decoration-none link-custom shadow">新規投稿</a>
-
-   </div>
+    </div>
    </div>
 
    @if($posts->isNotEmpty())

@@ -1,9 +1,12 @@
 {{-- resources/views/profile/show.blade.php --}}
 @extends('layouts.app')
 
-@section('title', 'プロフィール情報')
-
 @section('content')
+
+<div class="mx-auto" style="max-width: 550px;"> {{-- 中央寄せ＆幅指定 --}}
+    <p class="fs-4 fw-bold"><strong>プロフィール</strong></p>
+</div>
+
 <div class="mx-auto" style="max-width: 600px;"> {{-- 中央寄せ＆幅指定 --}}
     <div class="card mb-4 p-3 shadow">
         <div class="card-body">

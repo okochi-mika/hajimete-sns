@@ -33,17 +33,17 @@
                 <textarea class="form-control" id="content" name="content" rows="5">{{ old('content') }}</textarea>
             </div>
 
-            <div class="form-group mb-4">
+            <div class="form-group mb-1">
                 <label for="image">画像</label>
                 <input type="file" class="form-control" id="image" name="image">
+            </div>
 
-            <div class="from-group mb-4">
+            <div class="form-group mb-1">
                 <label for="video">動画</label>
                 <input type="file" class="form-control" id="video" name="video">
             </div>
-
-
-            <div class="from-group mb-4">
+            
+            <div class="form-group mb-1">
                 <label for="audio">音声</label>
                 <input type="file" class="form-control" id="audio" name="audio">
             </div>

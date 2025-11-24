@@ -1,13 +1,14 @@
 {{-- resources/views/profile/edit.blade.php --}}
 @extends('layouts.app')
 
-@section('title', 'プロフィール編集')
-
 @section('content')
-<div class="container profile-wrapper my-4">
-    <h2 class="mb-4 profile-title">プロフィール編集</h2>
 
-    <div class="mx-auto" style="width: 60%;"> {{-- 中央寄せ＆幅指定 --}}
+<div class="mx-auto" style="max-width: 550px;"> {{-- 中央寄せ＆幅指定 --}}
+    <p class="fs-4 fw-bold"><strong>プロフィール</strong></p>
+</div>
+
+<div class="container profile-wrapper my-4">
+    <div class="mx-auto" style="max-width: 600px;"> {{-- 中央寄せ＆幅指定 --}}
         <div class="card mb-4 p-3 shadow">
             <div class="card-body">
                 <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
@@ -35,7 +36,7 @@
 
                     {{-- アバター画像 --}}
                     <div class="mb-3">
-                        <label for="avatar" class="form-label fs-5 fw-bold">プロフィール画像</label>
+                        <label for="avatar" class="form-label fs-5 fw-bold">アイコン</label>
                         <input type="file" class="form-control" id="avatar" name="avatar">
                     </div>
 
