@@ -42,6 +42,12 @@
                 <input type="file" class="form-control" id="video" name="video">
             </div>
 
+
+            <div class="from-group mb-4">
+                <label for="audio">音声</label>
+                <input type="file" class="form-control" id="audio" name="audio">
+            </div>
+
             <button type="submit" class="btn btn-outline-primary shadow">投稿</button>
         </form>
     </div>

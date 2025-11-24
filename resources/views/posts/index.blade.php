@@ -40,9 +40,19 @@
                     <video src="{{ asset('storage/' . $post->video) }}"
                    class="mb-2"
                    style="max-width: 300px;"
-                   controls
-                   loop>
+                   controls 
+                   loop> 
                    </video>
+                @endif
+
+                {{-- 音声表示 --}}
+                @if ($post->audio)
+                    <audio src="{{ asset('storage/' . $post->audio) }}"
+                   class="mb-2"
+                   style="max-width: 300px;"
+                   controls 
+                   loop> 
+                   </audio>
                 @endif
 
                     <div class="text-muted mt-3">

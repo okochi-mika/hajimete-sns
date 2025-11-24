@@ -15,7 +15,8 @@ class Post extends Model
         'content',
         'user_id', // ← もし一緒に保存してるならこれも必要！
         'image_path',     // 画像カラム
-        'video',     // 動画カラム
+        'video',    // 動画カラム
+        'audio'    // 音声カラム
     ];
 
     // 1つの投稿は1人のユーザーに属する

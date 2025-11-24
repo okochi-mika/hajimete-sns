@@ -26,8 +26,18 @@
                 style="max-width: 500px; width: 100%;"
                 controls
                 loop>
-    </video>
-@endif
+            </video>
+            @endif
+
+            {{-- 音声表示 --}}
+            @if ($post->audio)
+                <audio src="{{ asset('storage/' . $post->audio) }}"
+                class="mb-3"
+                style="max-width: 500px; width: 100%;"
+                controls
+                loop>
+            </audio>
+            @endif
 
 
                <p class="card-text">{{ $post->content }}</p>

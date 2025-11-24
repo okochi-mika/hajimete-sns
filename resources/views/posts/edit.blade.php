@@ -77,6 +77,28 @@
                     </div>
                     @endif
 
+                     <!-- 音声アップロード -->
+                     <div class="form-group mb-3">
+                        <label for="audio" class="form-label fs-5 fw-bold">動画</label>
+                        <input type="file" class="form-control" id="audio" name="audio">
+                    </div>
+
+                                        <!-- 常に remove_audio を送信（0 = 削除しない） -->
+                    <input type="hidden" name="remove_audio" value="0">
+                    @if ($post->audio)
+                    <div class="mb-3">
+                        <audio src="{{ asset('storage/' . $post->audio) }}" 
+                        width="200" 
+                        controls></audio>
+                        <div class="mt-2">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="remove_audio" value="1">
+                                音声を削除する
+                            </label>
+                        </div>
+                    </div>
+                    @endif
+
                     <!-- 更新ボタン -->
                     <button type="submit" class="btn btn-outline-primary shadow me-1">更新</button>
 

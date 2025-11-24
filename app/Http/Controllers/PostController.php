@@ -46,9 +46,15 @@ class PostController extends Controller
     }
 
     // ★動画がアップロードされていれば保存する
-    if ($request->hasFile('videos') && $request->file('videos')->isValid()) { // hasFile() で動画があるかチェック,isValid() でアップロードの失敗を防止
-        $path = $request->file('videos')->store('videos', 'public'); // store('videos', 'public') で storage/app/public/videos/ に保存
-        $post->videos_path = $path;  // Postモデルにvideos_pathカラムがあることが前提、カラム名はvideos_pathで統一
+    if ($request->hasFile('video') && $request->file('video')->isValid()) { // hasFile() で動画があるかチェック,isValid() でアップロードの失敗を防止
+        $path = $request->file('video')->store('video', 'public'); // store('videos', 'public') で storage/app/public/video/ に保存
+        $post->video = $path;  // Postモデルにvideosカラムがあることが前提、カラム名はvideos_pathで統一
+    }
+
+        // ★音声がアップロードされていれば保存する
+    if ($request->hasFile('audio') && $request->file('audio')->isValid()) { // hasFile() で音声があるかチェック,isValid() でアップロードの失敗を防止
+        $path = $request->file('audio')->store('audio', 'public'); // store('audio', 'public') で storage/app/public/audio/ に保存
+        $post->audio = $path;  // Postモデルにaudioカラムがあることが前提、カラム名はaudioで統一
     }
 
         $post->save();
@@ -91,10 +97,19 @@ class PostController extends Controller
 
     // ✅ 動画削除処理
     if ($request->has('remove_video') && $request->input('remove_video') == 1) {
-        if ($post->videos_path) {
+        if ($post->video) {
             //  古い動画があれば削除
             Storage::disk('public')->delete($post->video);
             $post->video = null;
+        }
+    }
+
+        // ✅ 音声削除処理
+    if ($request->has('remove_audio') && $request->input('remove_audio') == 1) {
+        if ($post->audio) {
+            //  古い音声があれば削除
+            Storage::disk('public')->delete($post->audio);
+            $post->audio = null;
         }
     }
     
@@ -121,6 +136,18 @@ class PostController extends Controller
         $post->video =$path;
     }
     
+        // ✅ 新しい音声がアップロードされた場合
+
+    if ($request->hasFile('audio')) {
+        // 古い音声が残っていれば削除
+        if ($post->audio) {
+            Storage::disk('public')->delete($post->audio);
+        }
+        // 新しい音声を保存
+        $path = $request->file('audio')->store('audio', 'public');
+        $post->audio =$path;
+    }
+
     // 保存
     $post->save();
 
