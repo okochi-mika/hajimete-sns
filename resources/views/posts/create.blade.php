@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container my-5">
-    <h3 class="mb-4">投稿詳細</h3>
 
     <!-- 戻るリンク -->
     <div class="mb-4">

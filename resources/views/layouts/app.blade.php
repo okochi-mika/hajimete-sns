@@ -23,25 +23,12 @@
 
     <!-- 背景動画 -->
      
-    <video autoplay muted loop playsinline
-        style="
-            position: fixed;  
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -1;
-        ">
-        <source src="{{ asset('videos/snow_pink_B.mp4') }}" type="video/mp4">
-    </video>
-
     {{-- 右サイドに固定表示 --}}
     <img src="{{ asset('images/hajime_todoroki.gif') }}" 
          alt="はじめちゃん"
          style="position: fixed;
                 right: 20px;
-                bottom: 80px;
+                bottom: 50px;
                 width: auto;
                 height: 300px;
                 z-index: 9999;
@@ -53,7 +40,7 @@
          alt="はじめちゃん"
          style="position: fixed;
                 left: 30px;
-                bottom: 80px;
+                bottom: 50px;
                 width: auto;
                 height: 300px;
                 z-index: 9999;
@@ -78,6 +65,11 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 </body>
+
+{{--  背景に画像を追加 --}}
+<body style="background: url('{{ asset('images/christmas_chodam.png') }}') 
+             no-repeat center center fixed;
+             background-size: cover;">
 
 </html>
 
