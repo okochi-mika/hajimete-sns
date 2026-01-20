@@ -67,7 +67,7 @@
 </body>
 
 {{--  背景に画像を追加 --}}
-<body style="background: url('{{ asset('images/christmas_chodam.png') }}') 
+<body style="background: url('{{ asset('images/dot_pink_b.png') }}') 
              no-repeat center center fixed;
              background-size: cover;">
 
