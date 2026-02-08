@@ -38,8 +38,8 @@
                 loop>
             </audio>
             @endif
-            
-            {{-- URL込みの投稿 --}}
+
+            {{-- URL込み投稿 --}}
             @if ($post->url)
             <div class="mt-3">
                 <a href="{{ $post->url }}" target="_blank" rel="noopener noreferrer">

@@ -37,6 +37,7 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
+        $post->url = $request->url; // URL追加
         $post->user_id = Auth::id();
 
         // ★画像がアップロードされていれば保存する
@@ -56,15 +57,7 @@ class PostController extends Controller
         $path = $request->file('audio')->store('audio', 'public'); // store('audio', 'public') で storage/app/public/audio/ に保存
         $post->audio = $path;  // Postモデルにaudioカラムがあることが前提、カラム名はaudioで統一
     }
-
-    Post::create($request->only([
-    'title',
-    'content',
-    'url'
-    ]) + ['user_id' => auth()->id()]); // URL込みの投稿
-
         $post->save();
-
         return redirect()->route('posts.index')->with('flash_message', '投稿が完了しました。');
     }
 
@@ -153,14 +146,14 @@ class PostController extends Controller
         $post->audio =$path;
     }
 
+    // 保存
+    $post->save();
+
     $post->update($request->only([
     'title',
     'content',
     'url'
-    ]));  //URL込みの投稿があったら保存
-
-    // 保存
-    $post->save();
+    ]));  // URL込みの投稿があったら保存
 
     return redirect()->route('posts.show', $post)
         ->with('flash_message', '投稿を編集しました。');

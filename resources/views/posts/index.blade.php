@@ -52,6 +52,15 @@
                    </audio>
                 @endif
 
+                {{-- URL表示 --}}
+                @if ($post->url)
+                <p class="mt-2">
+                    <a href="{{ $post->url }}" target="_blank" rel="noopener" class="text-decoration-none">
+                        🔗 リンクを見る
+                    </a>
+                </p>
+                @endif
+                
                     <div class="text-muted mt-3">
                        <p class="fs-7 post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
 
