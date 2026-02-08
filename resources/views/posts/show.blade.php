@@ -40,7 +40,7 @@
             @endif
 
 
-               <p class="card-text">{{ $post->content }}</p>
+               <p class="card-text">{!! nl2br(e($post->content)) !!}</p>
                <p class="post-dates">投稿日時：{{ $post->created_at->format('Y-m-d H:i') }} （{{ $post->created_at->diffForHumans() }}）</p>
                <p class="post-dates">更新日時：{{ $post->updated_at->format('Y-m-d H:i') }} （{{ $post->updated_at->diffForHumans() }}）</p>
                @if ($post->user_id === Auth::id())

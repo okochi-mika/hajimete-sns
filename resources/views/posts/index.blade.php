@@ -25,7 +25,7 @@
                     <!-- タイトル -->
                        <h2 class="fs-4 fw-bold mb-3">{{ $post->title }}</h2>
                        <!-- 本文 -->
-                       <p class="fs-6 text-secondary">{{ $post->content }}</p>
+                       <p class="fs-6 text-secondary">{!! nl2br(e($post->content)) !!}</p>
 
                        {{-- 画像表示 --}}
                 @if ($post->image_path)
