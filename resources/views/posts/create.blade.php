@@ -47,6 +47,11 @@
                 <input type="file" class="form-control" id="audio" name="audio">
             </div>
 
+            <div class="form-group mb-3">
+                <label for="url">参考URL</label>
+                <input type="url" class="form-control" name="url" id="url" value="{{ old('url') }}">
+            </div>
+            
             <button type="submit" class="btn btn-outline-primary shadow">投稿</button>
         </form>
     </div>

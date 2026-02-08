@@ -57,11 +57,16 @@ class PostController extends Controller
         $post->audio = $path;  // Postモデルにaudioカラムがあることが前提、カラム名はaudioで統一
     }
 
+    Post::create($request->only([
+    'title',
+    'content',
+    'url'
+    ]) + ['user_id' => auth()->id()]); // URL込みの投稿
+
         $post->save();
 
         return redirect()->route('posts.index')->with('flash_message', '投稿が完了しました。');
     }
-
 
     // 編集ページ
     public function edit(Post $post)
@@ -147,6 +152,12 @@ class PostController extends Controller
         $path = $request->file('audio')->store('audio', 'public');
         $post->audio =$path;
     }
+
+    $post->update($request->only([
+    'title',
+    'content',
+    'url'
+    ]));  //URL込みの投稿があったら保存
 
     // 保存
     $post->save();

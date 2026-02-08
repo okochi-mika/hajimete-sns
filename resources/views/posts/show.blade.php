@@ -38,6 +38,16 @@
                 loop>
             </audio>
             @endif
+            
+            {{-- URL込みの投稿 --}}
+            @if ($post->url)
+            <div class="mt-3">
+                <a href="{{ $post->url }}" target="_blank" rel="noopener noreferrer">
+            🔗 参考リンクを見る
+                </a>
+            </div>
+            @endif
+
 
 
                <p class="card-text">{!! nl2br(e($post->content)) !!}</p>
