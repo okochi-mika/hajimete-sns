@@ -153,7 +153,7 @@ class PostController extends Controller
     'title',
     'content',
     'url'
-    ]));  // URL込みの投稿があったら保存
+    ])); 
 
     return redirect()->route('posts.show', $post)
         ->with('flash_message', '投稿を編集しました。');

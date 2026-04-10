@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'ブックマーク一覧')
 
 @section('content')
 <div class="container mt-4">

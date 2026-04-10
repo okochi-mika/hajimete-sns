@@ -65,6 +65,25 @@
                        </form>
                    </div>
                @endif
+
+               <hr> {{-- ← ここで区切るのおすすめ✨ --}}
+               
+            {{-- コメント一覧 --}}
+            <h5 class="mt-4">コメント</h5>
+               @foreach ($post->comments as $comment)
+               <div class="border p-2 mt-2">
+                {!! nl2br(e($comment->content)) !!}
+               </div>
+               @endforeach
+            {{-- コメント投稿フォーム --}}
+            <form action="{{ route('comments.store') }}" method="POST" class="mt-3">
+                @csrf
+                <textarea name="content" class="form-control mb-2"></textarea>
+
+                {{-- どの投稿に対するコメントか送る --}}
+                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                <button type="submit" class="btn btn-primary">コメントする</button>
+            </form>
            </div>
        </div>
    </article>
