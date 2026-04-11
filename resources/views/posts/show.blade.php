@@ -88,7 +88,7 @@
             <div class="text-danger">{{ $message }}</div>
             @enderror
 
-            
+
             @foreach ($post->comments as $comment)
     <div class="border p-2 mb-2">
         <p>{{ $comment->content }}</p>
@@ -98,7 +98,7 @@
             <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('削除しますか？');">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger btn-sm">削除</button>
+                <button class="tn btn-outline-danger shadow">削除</button>
             </form>
         @endif
     </div>
