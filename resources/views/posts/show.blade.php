@@ -68,22 +68,42 @@
 
                <hr> {{-- ← ここで区切るのおすすめ✨ --}}
                
-            {{-- コメント一覧 --}}
+            {{-- コメント一覧表示 --}}
             <h5 class="mt-4">コメント</h5>
                @foreach ($post->comments as $comment)
                <div class="border p-2 mt-2">
                 {!! nl2br(e($comment->content)) !!}
                </div>
                @endforeach
-            {{-- コメント投稿フォーム --}}
-            <form action="{{ route('comments.store') }}" method="POST" class="mt-3">
-                @csrf
-                <textarea name="content" class="form-control mb-2"></textarea>
 
+            {{-- コメント投稿フォーム --}}
+            <form action="{{ route('comments.store', $post) }}" method="POST">
+                @csrf
+                <textarea name="content" class="form-control"></textarea>
                 {{-- どの投稿に対するコメントか送る --}}
-                <input type="hidden" name="post_id" value="{{ $post->id }}">
-                <button type="submit" class="btn btn-primary">コメントする</button>
+                <button type="submit">コメントする</button>
             </form>
+        
+            @error('content')
+            <div class="text-danger">{{ $message }}</div>
+            @enderror
+
+            
+            @foreach ($post->comments as $comment)
+    <div class="border p-2 mb-2">
+        <p>{{ $comment->content }}</p>
+
+        {{-- 自分のコメントだけ削除ボタン表示 --}}
+        @if ($comment->user_id === auth()->id())
+            <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('削除しますか？');">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger btn-sm">削除</button>
+            </form>
+        @endif
+    </div>
+@endforeach
+            
            </div>
        </div>
    </article>

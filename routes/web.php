@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/bookmark/{post}', [BookmarkController::class, 'store'])->name('bookmark.store');  //←ブックマーク追加
     Route::delete('/bookmark/{post}', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');  // ブックマーク削除  
     Route::get('/bookmarks', [App\Http\Controllers\BookmarkController::class, 'index'])->name('bookmarks.index'); // ブックマーク一覧
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store'); // ← コメントルート追加
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])
+    ->name('comments.store');
+    Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])
+    ->name('comments.destroy');
  
 });
 
