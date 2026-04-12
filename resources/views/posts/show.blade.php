@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', '投稿詳細')
-
 @section('content')
    @if (session('flash_message'))
        <p class="text-success">{{ session('flash_message') }}</p>
@@ -66,45 +64,42 @@
                    </div>
                @endif
 
-               <hr> {{-- ← ここで区切るのおすすめ✨ --}}
-               
-            {{-- コメント一覧表示 --}}
-            <h5 class="mt-4">コメント</h5>
-               @foreach ($post->comments as $comment)
-               <div class="border p-2 mt-2">
-                {!! nl2br(e($comment->content)) !!}
-               </div>
-               @endforeach
+              <hr>
 
-            {{-- コメント投稿フォーム --}}
-            <form action="{{ route('comments.store', $post) }}" method="POST">
-                @csrf
-                <textarea name="content" class="form-control"></textarea>
-                {{-- どの投稿に対するコメントか送る --}}
-                <button type="submit">コメントする</button>
-            </form>
-        
-            @error('content')
-            <div class="text-danger">{{ $message }}</div>
-            @enderror
+<h5 class="mt-4">コメント</h5>
 
-
-            @foreach ($post->comments as $comment)
+@foreach ($post->comments as $comment)
     <div class="border p-2 mb-2">
-        <p>{{ $comment->content }}</p>
+        {!! nl2br(e($comment->content)) !!}
+
+        <small class="text-muted d-block mt-1">
+            {{ $comment->created_at->format('Y-m-d H:i') }}
+        </small>
 
         {{-- 自分のコメントだけ削除ボタン表示 --}}
         @if ($comment->user_id === auth()->id())
-            <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('削除しますか？');">
+            <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('削除しますか？');" class="mt-2">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-outline-danger shadow">削除</button>
+                <button class="btn btn-sm btn-outline-danger">削除</button>
             </form>
         @endif
     </div>
 @endforeach
-            
-           </div>
-       </div>
-   </article>
+
+{{-- コメント投稿フォーム --}}
+<form action="{{ route('comments.store', $post) }}" method="POST" class="mt-3">
+    @csrf
+    <textarea name="content" class="form-control"></textarea>
+
+    @error('content')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+
+    <button type="submit" class="mt-2">コメントする</button>
+</form>
+       </div> {{-- card-body --}}
+   </div> {{-- card --}}
+   </div> {{-- mx-auto --}}
+</div> {{-- container --}}
 @endsection
