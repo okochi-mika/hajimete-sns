@@ -70,13 +70,23 @@
 
 @foreach ($post->comments as $comment)
     <div class="border p-2 mb-2">
-        {!! nl2br(e($comment->content)) !!}
 
+        {{-- ユーザー名 --}}
+        <small class="text-muted">
+            {{ $comment->user->name }}
+        </small>
+
+        {{-- コメント内容 --}}
+        <p class="mb-1">
+            {!! nl2br(e($comment->content)) !!}
+        </p>
+
+        {{-- 投稿日時 --}}
         <small class="text-muted d-block mt-1">
             {{ $comment->created_at->format('Y-m-d H:i') }}
         </small>
 
-        {{-- 自分のコメントだけ削除ボタン表示 --}}
+        {{-- 削除ボタン --}}
         @if ($comment->user_id === auth()->id())
             <form action="{{ route('comments.destroy', $comment) }}" method="POST" onsubmit="return confirm('削除しますか？');" class="mt-2">
                 @csrf
@@ -84,6 +94,7 @@
                 <button class="btn btn-sm btn-outline-danger">削除</button>
             </form>
         @endif
+
     </div>
 @endforeach
 

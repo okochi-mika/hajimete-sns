@@ -24,6 +24,7 @@ public function store(Request $request, \App\Models\Post $post)
 
 public function destroy(Comment $comment)
 {
+    
     // 自分のコメントじゃなければ拒否
     if ($comment->user_id !== auth()->id()) {
         return back()->with('error_message', '不正な操作です');
@@ -32,6 +33,8 @@ public function destroy(Comment $comment)
     $comment->delete();
 
     return back()->with('flash_message', 'コメントを削除しました');
+    
 }
+
 }
 
